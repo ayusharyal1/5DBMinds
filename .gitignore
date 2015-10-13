@@ -1,0 +1,6 @@
+#ignore all temporary files
+/*~
+
+#Ignore all directories in tem directory
+
+tmp/**/*

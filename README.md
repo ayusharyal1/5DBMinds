@@ -1,4 +1,4 @@
-# This is a README for the big data project of team 5DBMinds
+# README for the big data project of team 5DBMinds
 
 CSE-4990/6990 - Big Data and Data Science
 
@@ -7,12 +7,11 @@ Project Name: "Predicting PlayStore Rating for Apps"
 Team 3: 5DBminds
 
 Team Members (Alphabetically):
-Ayush Raj Aryal 
+Ayush Raj Aryal
 Daniel John Sween
-Lucas Andrade Ribeiro 
+Lucas Andrade Ribeiro
 Naila Bushra
 Naresh Adhikari
-
 --------------------------------------------------------------
 
 Data: The data of this project has been collected from the

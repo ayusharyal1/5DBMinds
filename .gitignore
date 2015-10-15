@@ -1,5 +1,7 @@
 #ignore all temporary files
 /*~
+*.*~
+.*.swp
 
 #Ignore all directories in tem directory
 

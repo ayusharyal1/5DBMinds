@@ -6,3 +6,5 @@
 #Ignore all directories in tem directory
 
 tmp/**/*
+Untitled*.*
+**/.pynb_checkpoints/

@@ -1,56 +1,57 @@
 #Team: 5DB Minds
-#We have splitted the 6.2 GB JSON file into 1146 files for data handling convenience. The command for splitting is
-#split -l 1000 PlayStore_2015_07.json dir_where_to_be_splitted
+#json to csv
 import pandas as pd
 import os
 import json
-import pprint
-import csv
 import unicodedata
-import ast
+import time
 
-input_dir = './smallest/'
-app_attributes = ['AppSize', 'Category', 'ContentRating', 'Developer', 'Description', 'HaveInAppPurchases', \
-'Instalations', 'IsFree', 'IsTopDeveloper', 'LastUpdateDate', 'Name', 'Price', 'PublicationDate', 'Reviewers', \
-'Reviews', 'ReviewsStatus', 'Score']
+start_time = time.time()
+input_dir = './smallDataChunks/'
+app_attributes = ['AppSize', 'Category', 'ContentRating', 'Description', 'Developer', 'HaveInAppPurchases', 'Instalations', 'IsFree', 'IsTopDeveloper', 'LastUpdateDate', 'Name', 'Price', 'PublicationDate', 'Score']
+#'Reviewers', 'Reviews', 'ReviewsStatus', 'Score']
 out_dir = './out/'
 filelist = os.listdir(input_dir)
-df = pd.DataFrame(index=None, columns=app_attributes)
+df = pd.DataFrame(columns=app_attributes)
 
+# not used, converts unicode to string
 def utos(uni):
     return unicodedata.normalize('NFKD', uni).encode('ascii','ignore')
 
 if not os.path.exists(out_dir): os.makedirs(out_dir)
 
+row_count = 0;
 for file_ in filelist:
-    with open(input_dir+'data', 'rb') as f:
-        line = f.readlines()
-	# remove the trailing "\n" from each line
-	line = map(lambda x: x.rstrip(), line)
-    print len(line)
-
-    for i in range(0,len(line)):
-	#json_acceptable_string = line[i].replace("'", "\"")
-        dn = json.loads(line[i])
-	for key,value in dn.items():
-		if key in df.columns:
-			print dn[key]
-			df[key]=dn[key]
-
-    #for col in df.columns:
-	#df[col].append(dn["AppSize"])
-    #df = df.append(line)
-
-#df = df[1:]
-print df.head()
+    	print file_
+	with open(input_dir+file_, 'rb') as f:
+		line = f.readlines()
+		# remove the trailing "\n" from each line
+		line = map(lambda x: x.rstrip(), line)
+    	#print len(line)
+	row = [] # dataframe row
+	header = [] # dataframe header
+    	for i in range(0,len(line)):
+		dn = json.loads(line[i])
+		header = []
+		for key,value in dn.items():
+			if key in app_attributes:# our selected feature attributes
+				if key == 'LastUpdateDate' or key == 'PublicationDate':# nested values
+					value = value['$date']
+				elif	key == 'Score':# nested values
+					value = value['Total']
+				#if type(value) == 'unicode':
+					#value = utos(value)
+				row.append(value) # make list of attribute values
+				header.append(key) # make list of column names
+		# add rows in dataframe
+		df.loc[row_count] = row
+		row = []
+		row_count = row_count + 1
 print df.shape
+df.columns = header # final sequential column name
+df.to_csv(out_dir+'big_data.csv',encoding='utf-8')
+#df.to_csv('big_data.csv',encoding='utf-8',header=header, sep=',')
+print("--- %s seconds ---" % (time.time() - start_time))
 
-#df.to_csv('big_data.csv')
-df.to_json('big_data.json')
-'''df = pd.read_json('big_data.json')
-f = open('big_data.json')  
-data = json.load(f)
-f.close()
 
-print data.shape
-print type(data)'''
+

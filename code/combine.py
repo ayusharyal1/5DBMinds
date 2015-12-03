@@ -1,5 +1,6 @@
 #Team: 5DB Minds
-#linear regression
+#for combining 12 csv files
+
 import pandas as pd
 import os
 import time

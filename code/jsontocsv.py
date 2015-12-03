@@ -1,5 +1,7 @@
 #Team: 5DB Minds
-#json to csv
+# Naila Bushra
+#Converts json files to csv
+
 import pandas as pd
 import os
 import json
@@ -7,10 +9,10 @@ import unicodedata
 import time
 
 start_time = time.time()
-input_dir = './smallDataChunks/'
+input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/smallDataChunksDivided/9/'
 app_attributes = ['AppSize', 'Category', 'ContentRating', 'Description', 'Developer', 'HaveInAppPurchases', 'Instalations', 'IsFree', 'IsTopDeveloper', 'LastUpdateDate', 'Name', 'Price', 'PublicationDate', 'Score']
 #'Reviewers', 'Reviews', 'ReviewsStatus', 'Score']
-out_dir = './out/'
+out_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/out/'
 filelist = os.listdir(input_dir)
 df = pd.DataFrame(columns=app_attributes)
 
@@ -49,7 +51,7 @@ for file_ in filelist:
 		row_count = row_count + 1
 print df.shape
 df.columns = header # final sequential column name
-df.to_csv(out_dir+'big_data.csv',encoding='utf-8')
+df.to_csv(out_dir+'big_data9.csv',encoding='utf-8')
 #df.to_csv('big_data.csv',encoding='utf-8',header=header, sep=',')
 print("--- %s seconds ---" % (time.time() - start_time))
 

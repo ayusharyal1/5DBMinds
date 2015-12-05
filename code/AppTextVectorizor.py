@@ -14,158 +14,12 @@
 import numpy
 import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
-
-
-# In[26]:
-
-content= ["hello How ARE YOU there", "How is  ARE everything everyting","I am not sure how this is possible", "How are you"]
-
-
-# In[25]:
-
-vectorizer = CountVectorizer(min_df=1)
-X_train = vectorizer.fit_transform(content)
-
-
-# In[24]:
-
-vectorizer.get_feature_names()
-
-
-# In[28]:
-
-print X_train.shape
-print X_train.toarray()
-
-
-# In[29]:
-
-new_post = "How ARE how YOU there"
-new_post_vec = vectorizer.transform([new_post])
-print new_post_vec
-
-
-# In[30]:
-
-print new_post_vec.toarray()
-
-
-# In[ ]:
-
-#Similarity Calculations; Calculate Eculidean Distance between the count vectors of the new post and ll the old posts as below:
-
-
-# In[31]:
-
-import scipy as sp
-def dist_raw(v1,v2):
-    delta= v1-v2
-    return sp.linalg.norm(delta.toarray()) #norm() calculates the Eculidean norm i.e. shortest distance
-
-def dist_norm(v1,v2):
-    v1_normalized = v1/sp.linalg.norm(v1.toarray())
-    v2_normalized = v2/sp.linalg.norm(v2.toarray())
-    delta= v1_normalized-v2_normalized
-    return sp.linalg.norm(delta.toarray()) #norm() calculates the Eculidean norm i.e. shortest distance
-
-
-# In[32]:
-
 import sys
-best_doc = None
-best_i = None
-num_samples = len(content)
-
-def best_match(X_train,new_post_vec):
-    best_dist = sys.maxint
-    for i in range(0, num_samples):
-        post = content[i]
-        if post == new_post:
-            continue
-        post_vec = X_train.getrow(i)
-        #d = dist_raw(post_vec, new_post_vec)
-        d = dist_norm(post_vec, new_post_vec)
-        print "===Post %i with dist = %.2f: %s"%(i,d,post)
-        if d< best_dist:
-            best_dist = d
-            best_i = i
-    print "Best post is %i with dist = %.4f"%(best_i,best_dist)
-best_match(X_train, new_post_vec)
-
-
-# In[ ]:
-
-print X_train.getrow(0).toarray()
-print new_post_vec.toarray()
-
-
-# In[33]:
-
-#Removing less important words
-#Remove more frequent words that do not help to distinguish netween different texts. 
-#MODIFY YOUR Vectorizer
-vectorizer2 = CountVectorizer(min_df =1, stop_words='english')
-sorted(vectorizer2.get_stop_words())[0:10]
-
-
-# In[34]:
-
-X_train2 = vectorizer2.fit_transform(content)
-vectorizer2.get_feature_names()
-new_post_vec2 = vectorizer2.transform([new_post])
-best_match(X_train2, new_post_vec2)
-
-
-# In[35]:
-
 # Use NLTK to reduce words to their stem i.e. origin
 import nltk.stem
-s= nltk.stem.SnowballStemmer('english')
-s.stem("graphics")
 
 
-# In[36]:
-
-'''Use StemmedCountVectorizer to do:
-1. lower casing the raw post in the preprossing step done in parent calss.
-2. Extracting all individual words in the tokenization step in parent class.
-3. Converting each word into its stemmed version.'''
-english_stemmer = nltk.stem.SnowballStemmer('english')
-class StemmedCountVectorizer(CountVectorizer):
-    english_stemmer = nltk.stem.SnowballStemmer('english')
-    def build_analyzer(self):
-        analyzer = super(StemmedCountVectorizer,self).build_analyzer()
-        return lambda doc: (english_stemmer.stem(w) for w in analyzer(doc))
-
-
-# In[ ]:
-
-
-
-
-# In[37]:
-
-stem_vectorizer = StemmedCountVectorizer(min_df =1, stop_words='english')
-X_train3 = stem_vectorizer.fit_transform(content)
-print stem_vectorizer.get_feature_names()
-print X_train3.toarray()
-
-new_post_vec3 = stem_vectorizer.transform([new_post])
-best_match(X_train3, new_post_vec3)
-print("new post:"),new_post
-
-
-# FootNotes:
-#     
-#     What does a rater sees when he rates an android app? == Extrinsic Features
-#     What an android app inherits that influences app rating? == Intrinsic Features
-#     
-#     
-#     Vectors to predict: 1. 5-star count, 4-star count, 3-star-count, 2-star count, 1-star count.
-#     Because, average app-rating depends upon the values of these values. Also on current rating of the app.
-#     
-
-# In[38]:
+# In[217]:
 
 #Read CSV
 import pandas as pd
@@ -174,17 +28,21 @@ from numpy import *
 import numpy as np
 import os
 from pandas import DataFrame
-import numpy
 import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
 import scipy as sp
-# Use NLTK to reduce words to their stem i.e. origin
 import nltk.stem
 # Use NLTK to reduce words to their stem i.e. origin
-import nltk.stem
+from nltk import word_tokenize          
+from nltk.stem import WordNetLemmatizer 
+import string
+from collections import Counter
+import sys
+from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import TfidfTransformer
 
 
-# In[40]:
+# In[218]:
 
 app_file = '../data/big-data-csv.csv'
 appdf = pd.read_csv(app_file,sep=',')
@@ -215,15 +73,6 @@ col_cat.unique()
 
 
 # In[134]:
-
-from nltk import word_tokenize          
-from nltk.stem import WordNetLemmatizer 
-import string
-from collections import Counter
-import sys
-import nltk.stem
-from nltk.corpus import stopwords
-from sklearn.feature_extraction.text import TfidfTransformer
 
 class LemmaTokenizer(object):
     
@@ -462,7 +311,7 @@ print nd_array_x.toarray()[0:10,0:10]
 # #### #Analysis of Description Field
 # 
 
-# In[189]:
+# In[220]:
 
 #stopwords = stopwords.words('english') #37386, 37225,37185
 
@@ -492,13 +341,13 @@ stem_vectorizer = StemmedCountVectorizer(min_df =min_df,
 newfeature, desc_fmatrix, desc_vectorizer = vectorize_column2(df_desc, 'Description', stem_vectorizer, n_samples=100)
 
 
-# In[193]:
+# In[221]:
 
 stat_vectorized_matrix(desc_fmatrix.toarray(), desc_vectorizer)
 newfeature.tail(5)
 
 
-# In[215]:
+# In[222]:
 
 tfidf_transformer  = TfidfTransformer(norm="l2").fit(desc_fmatrix)
 desc_nd_array_x = tfidf_transformer.transform(desc_fmatrix, copy=True)
@@ -559,3 +408,18 @@ print appdf.installs_ls.head(5) + appdf.installs_hs.head(5)
 #             
 #             
 #             http://www.cs.toronto.edu/~marlin/research/thesis/cfmlp.pdf
+#             
+# ### FootNotes:
+#     
+#         What does a rater sees when he rates an android app? == Extrinsic Features
+#         What an android app inherits that influences app rating? == Intrinsic Features
+# 
+# 
+#         Vectors to predict: 1. 5-star count, 4-star count, 3-star-count, 2-star count, 1-star count.
+#         Because, average app-rating depends upon the values of these values. Also on current rating of the app.
+# 
+
+# In[ ]:
+
+
+

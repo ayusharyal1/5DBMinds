@@ -1,0 +1,13 @@
+### How to Install Stop Words ?
+
+In your terminal:
+        $python
+        >>import nltk
+        >>nltk.download()
+        >>d ##hit 'd'
+        >>stopwords ##type stopwords
+Suppose you downloaded the stopwords in your '~/nltk_data/corpora/stopwords' folder
+
+1. Perhaps the folder is downloaded in your current directory ~/nltk_data/corpora/stopwords
+2. Extract 5DBMinds/data/stopwords-extended.zip of our project repository in github.
+3. Copy all files to your ~/nltk_data/corpora/stopwords folder.

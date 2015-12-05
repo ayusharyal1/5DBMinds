@@ -9,19 +9,16 @@
 #When it involves a lot of manual work, this is often referred to as feature engineering.
 
 
-# In[15]:
+# In[228]:
 
 import numpy
 import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
 import sys
-# Use NLTK to reduce words to their stem i.e. origin
-import nltk.stem
 
 
 # In[217]:
 
-#Read CSV
 import pandas as pd
 from pandas import *
 from numpy import *
@@ -32,7 +29,6 @@ import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
 import scipy as sp
 import nltk.stem
-# Use NLTK to reduce words to their stem i.e. origin
 from nltk import word_tokenize          
 from nltk.stem import WordNetLemmatizer 
 import string
@@ -162,7 +158,7 @@ stopwords_list = stopwords.words('english')
 #             2. Extract 5DBMinds/data/stopwords-extended.zip of our project repository in github.
 #             3. Copy all files to your ~/nltk_data/corpora/stopwords folder.
 
-# In[216]:
+# In[224]:
 
 '''Returns a vectorized ND dataframe, vectorized ndarray, 
 and an instance of the vectorizer Class used to transform.'''
@@ -185,10 +181,23 @@ def vectorize_column(dataframe,column_name,vectorizer=None):
         print("No column found")
         
         
-'''Returns a vectorized ND dataframe, vectorized ndarray, and an 
-instance of the vectorizer Class used to transform. If tf_idf is True
-, it returns matrix after computing tf_idf of the term_freq-matrix returned
-by a countvectorizer.'''
+'''Returns a vectorized (n_samples,n_features) dataframe, matrix and vectorizing object.
+Parameters:
+dataframe: pandas dataframe object
+column_name: name of the column you want to vectorize (a column in above dataframe object)
+vectorizer= Vectorizer Object, if none then CountVectorizer is used as default. 
+n_samples: number of rows you want to vectorize
+tf_idf: if True then TF-IDF matrix is returned, else only matrix of term frequency is return.
+
+USAGE:
+stem_vectorizer = StemmedCountVectorizer(encoding='utf-8',
+                                         min_df =min_df,
+                                         max_df =max_df,
+                                         stop_words='english',
+                                         analyzer='word',
+                                         lowercase = lowercase)
+dfx, matrixX, sv = vectorize_columnTfIdf(df, 'my_column',vectorizer=stem_vectorizer, n_samples=100, tf_idf=True)
+'''
 
 def vectorize_columnTfIdf(dataframe,column_name,vectorizer=None, n_samples=None, tf_idf=False):
     
@@ -239,7 +248,6 @@ def vectorize_columnTfIdf(dataframe,column_name,vectorizer=None, n_samples=None,
 #     3. Do interjections, determiners carry information (Stop Words)?
 #     2. Does numerical strings carries information? 000, 000, 100 	000, 0000,000031,0002, 03 ,004,	0005 	0006 	0007
 #     1. 
-#     
 # ####  Term Frequency: 
 #     Counting how many times does a word occur in each message (Term Freq.)
 # #### Inverse  Document Frequency:
@@ -280,17 +288,11 @@ cat_newfeature.head(3)
 
 
 # ### Use TD-IDF Transformer, Also
-#     1. Evaluate change in sparcity
+#     1. Evaluate change in sparcity. No change in sparcity.
 
-# In[49]:
-
-
-
-
-# In[205]:
+# In[223]:
 
 cat_tfidf_transformer  = TfidfTransformer().fit(cat_fmatrix)
-print cat_tfidf_transformer.idf_
 cat_nd_array_x = cat_tfidf_transformer.transform(cat_fmatrix.toarray(), copy=True)
 
 
@@ -299,13 +301,6 @@ cat_nd_array_x = cat_tfidf_transformer.transform(cat_fmatrix.toarray(), copy=Tru
 stat_vectorized_matrix(cat_nd_array_x.toarray(),cat_tfidf_transformer)
 
 print nd_array_x.toarray()[0:10,0:10]
-
-
-# 
-
-# In[52]:
-
-
 
 
 # #### #Analysis of Description Field
@@ -367,7 +362,6 @@ print desc_nd_array_x.todense()
 
 col_name = appdf.Name
 #print col_name[col_name.str.contains('000')]
-
 
 #stem_vectorizer = StemmedCountVectorizer(min_df =1, stop_words='english')
 #newfeature, fmatrix, column_vectorizer = vectorize_column(appdf, 'Name', stem_vectorizer)

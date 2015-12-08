@@ -12,61 +12,59 @@ from sklearn.cross_validation import cross_val_predict
 from sklearn.linear_model import LinearRegression
 from sklearn import cross_validation
 from sklearn.metrics import accuracy_score
+from sklearn.cross_validation import KFold
 
 start_time = time.time()
-input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/big_data1.csv'
+input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/big_data_vec_1_5K.csv'
 
 df = pd.DataFrame()
 df = pd.read_csv(input_dir)
 df = df.drop(df.columns[0], axis=1)# drop the column of row index
 print df.shape
 
+data_points = 5000
 # k fold
-df_train = df[:70000]
-df_test = df[70000:]
+#df_train = df[:3500]
+#df_test = df[3500:]
+#label_train = df_train.as_matrix(columns=['Score'])
+#label_test = df_test.as_matrix(columns=['Score'])
 
-label_train = df_train.as_matrix(columns=['Score'])
-label_test = df_test.as_matrix(columns=['Score'])
+kf = KFold(5000, n_folds=10)
+for train, test in kf:
+	#print 'train=',train
+	#print 'test=',test
 
-#df_train, df_test, label_train, label_test = cross_validation.train_test_split(\
-#df, df['Score'], test_size=0.3, random_state=0)
-print df_train.shape, label_train.shape
-print df_test.shape, label_test.shape
- 
-#lr = LinearRegression(fit_intercept=True, normalize=False, copy_X=True, n_jobs=4)
-lr = LinearRegression()
+	df_train = df.loc[train]
+	df_test = df.loc[test]
 
-# cross_val_predict returns an array of the same size as `y` where each entry
-# is a prediction obtained by cross validated:
-y = df['Score'].as_matrix()
-predicted = cross_val_predict(lr, df.as_matrix(), y, cv=10)
+	print 'train shape', df_train.shape
+	print 'test shape', df_test.shape
 
-fig, ax = plt.subplots()
-ax.scatter(y, predicted)
-ax.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=1, marker='+')
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
-plt.show()
+	label_train = df_train.as_matrix(columns=['Score'])
+	label_test = df_test.as_matrix(columns=['Score'])
 
-lr.fit(df_train, label_train)
+	#lr = LinearRegression(fit_intercept=True, normalize=False, copy_X=True, n_jobs=4)
+	lr = LinearRegression()
 
-# The coefficients
-print('Coefficients: \n', lr.coef_)
+	lr.fit(df_train, label_train)
 
-# The mean square error
-print("Residual sum of squares: %.2f"% np.mean((lr.predict(df_test.as_matrix()) - label_test) ** 2))
+	# The coefficients
+	#print('Coefficients: \n', lr.coef_)
 
-# Explained variance score: 1 is perfect prediction
-print('Variance score: %.2f' % lr.score(df_test, label_test))
+	# The mean square error
+	print("Residual sum of squares: %.2f"% np.mean((lr.predict(df_test.as_matrix()) - label_test) ** 2))
 
-# Plot outputs
-'''plt.scatter(df_test, label_test,  color='black')
-plt.plot(df_test, lr.predict(df_test), color='blue', linewidth=3)
+	# Explained variance score: 1 is perfect prediction
+	print('Variance score: %.2f' % lr.score(df_test, label_test))
 
-plt.xticks(())
-plt.yticks(())
+	# Plot outputs
+	'''plt.scatter(df_test, label_test,  color='black')
+	plt.plot(df_test, lr.predict(df_test), color='blue', linewidth=3)
 
-plt.show()'''
+	plt.xticks(())
+	plt.yticks(())
+
+	plt.show()'''
 
 print("--- %s seconds ---" % (time.time() - start_time))
 

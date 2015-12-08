@@ -14,21 +14,28 @@ from sklearn import cross_validation
 from sklearn.metrics import accuracy_score
 
 start_time = time.time()
-input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/big_data_vec_1_5K.csv'
-
+input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/big_data_with_2_vec_1_10K.csv'
+#big_data_vec_1_10K
+#big_data_with_2_vec_1_10K 
+#big_data_without_vec_1_10K 
 df = pd.DataFrame()
 df = pd.read_csv(input_dir)
+print df.head()
 df = df.drop(df.columns[0], axis=1)# drop the column of row index
 print df.shape
 
-data_points = 5000
+data_points = 10000
 
 lr = LinearRegression()
 
 # cross_val_predict returns an array of the same size as `y` where each entry
 # is a prediction obtained by cross validated:
 y = df['Score'].as_matrix()
+df = df.drop('Score', axis=1)
+print df.columns
+
 predicted = cross_val_predict(lr, df.as_matrix(), y, cv=10)
+print df.columns
 
 fig, ax = plt.subplots()
 ax.scatter(y, predicted)

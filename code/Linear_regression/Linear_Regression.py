@@ -15,8 +15,12 @@ from sklearn.metrics import accuracy_score
 from sklearn.cross_validation import KFold
 
 start_time = time.time()
-input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/big_data_vec_1_5K.csv'
+input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/big_data_vec_1_10K.csv'
+#big_data_vec_1_10K
+#big_data_with_2_vec_1_10K 
+#big_data_without_vec_1_10K 
 
+#big_data_with_2_vec_1 #big_data_without_vec_1
 df = pd.DataFrame()
 df = pd.read_csv(input_dir)
 df = df.drop(df.columns[0], axis=1)# drop the column of row index
@@ -37,11 +41,14 @@ for train, test in kf:
 	df_train = df.loc[train]
 	df_test = df.loc[test]
 
-	print 'train shape', df_train.shape
-	print 'test shape', df_test.shape
+	#print 'train shape', df_train.shape
+	#print 'test shape', df_test.shape
 
 	label_train = df_train.as_matrix(columns=['Score'])
 	label_test = df_test.as_matrix(columns=['Score'])
+
+	df_train = df_train.drop('Score', axis=1)
+	df_test = df_test.drop('Score', axis=1)
 
 	#lr = LinearRegression(fit_intercept=True, normalize=False, copy_X=True, n_jobs=4)
 	lr = LinearRegression()

@@ -14,8 +14,21 @@ from sklearn import cross_validation
 from sklearn.metrics import accuracy_score
 from sklearn.cross_validation import KFold
 
+# normalize 1
+def normalize(df):
+    # iterate over columns
+    for cols in df.columns:
+	num = df[cols]
+	# exclude columns having -1 and 0
+        if np.sum(num) == len(num)*(-1) or np.sum(num) == 0:
+                pass
+	else:
+		df[cols] = (df[cols] - df[cols].mean())/df[cols].std()
+
+    return df
+
 start_time = time.time()
-input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/big_data_vec_1_10K.csv'
+input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/3K/big_data_without_vec_1_3K_9features.csv'
 #big_data_vec_1_10K
 #big_data_with_2_vec_1_10K 
 #big_data_without_vec_1_10K 
@@ -25,15 +38,9 @@ df = pd.DataFrame()
 df = pd.read_csv(input_dir)
 df = df.drop(df.columns[0], axis=1)# drop the column of row index
 print df.shape
+#print df.head()
 
-data_points = 5000
-# k fold
-#df_train = df[:3500]
-#df_test = df[3500:]
-#label_train = df_train.as_matrix(columns=['Score'])
-#label_test = df_test.as_matrix(columns=['Score'])
-
-kf = KFold(5000, n_folds=10)
+kf = KFold(3000, n_folds=4)
 for train, test in kf:
 	#print 'train=',train
 	#print 'test=',test
@@ -50,16 +57,19 @@ for train, test in kf:
 	df_train = df_train.drop('Score', axis=1)
 	df_test = df_test.drop('Score', axis=1)
 
+	#df_train = normalize(df_train)
+	#df_test = normalize(df_test)
+
 	#lr = LinearRegression(fit_intercept=True, normalize=False, copy_X=True, n_jobs=4)
 	lr = LinearRegression()
 
-	lr.fit(df_train, label_train)
+	lr.fit(df_train.as_matrix(), label_train)
 
 	# The coefficients
 	#print('Coefficients: \n', lr.coef_)
 
 	# The mean square error
-	print("Residual sum of squares: %.2f"% np.mean((lr.predict(df_test.as_matrix()) - label_test) ** 2))
+	print("Residual sum of squares: %.2f"%np.mean((lr.predict(df_test.as_matrix())-label_test)**2))
 
 	# Explained variance score: 1 is perfect prediction
 	print('Variance score: %.2f' % lr.score(df_test, label_test))

@@ -86,12 +86,12 @@ df_train.Instalations = map(mapInstalation, df_train.Instalations)
 #df.AppSize=map(processAppSize,df.AppSize)
 
 #-------------------------split 100K points points into 20 segments------------------#
-splitted = [pd.DataFrame() for x in xrange(20)]
+'''splitted = [pd.DataFrame() for x in xrange(20)]
 
 splitted[0] = df_train[0:5000]
 for i in range(1, 20):
 	j = 5000
-	splitted[i] = df_train[j*i:j*(i+1)]
+	splitted[i] = df_train[j*i:j*(i+1)]'''
 
 #----------------------------------Vectorization--------------------------------------#
 min_df = 1
@@ -110,7 +110,10 @@ count_dialect = True
 #n_samples = n_samples #as u choose it.
 stem_vectorizer.setfilter_option(filter_by[0],count_dialect)
 
-df_train = df_train[:5000]
+df_train = df_train[:75000]
+# Randomly sample % of your dataframe
+df_train = df_train.sample(frac=0.04)
+
 vector_df1, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'Category',vectorizer=stem_vectorizer, tf_idf=True)
 vector_df2, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'Developer',vectorizer=stem_vectorizer, tf_idf=True)
 vector_df3, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'Name',vectorizer=stem_vectorizer, tf_idf=True)
@@ -123,11 +126,13 @@ vector_df5, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'De
 #dist = squareform(dist)
 #print dist.shape
 
-pca = PCA(n_components=10, copy=True)
-vector_df2_pca = pd.DataFrame(pca.fit(vector_df2).transform(vector_df2))
-vector_df3_pca = pd.DataFrame(pca.fit(vector_df3).transform(vector_df3))
-vector_df5_pca = pd.DataFrame(pca.fit(vector_df5).transform(vector_df5))
+pca = PCA(n_components=5, copy=True)
+vector_df2 = pd.DataFrame(pca.fit(vector_df2).transform(vector_df2))
+vector_df3 = pd.DataFrame(pca.fit(vector_df3).transform(vector_df3))
+vector_df5 = pd.DataFrame(pca.fit(vector_df5).transform(vector_df5))
+
 print 'finished pca'
+
 #print vector_df2_pca.shape
 #print vector_df3_pca.shape
 #---------------------------------------TSNE-----------------------------------------#
@@ -143,10 +148,16 @@ df_train = df_train.drop('ContentRating', 1)
 df_train = df_train.drop('Description', 1)
 
 df_train = pd.concat([df_train, vector_df1], axis=1, join_axes=[df_train.index])
-df_train = pd.concat([df_train, vector_df2_pca], axis=1, join_axes=[df_train.index])
-df_train = pd.concat([df_train, vector_df3_pca], axis=1, join_axes=[df_train.index])
+df_train = pd.concat([df_train, vector_df2], axis=1, join_axes=[df_train.index])
+df_train = pd.concat([df_train, vector_df3], axis=1, join_axes=[df_train.index])
 df_train = pd.concat([df_train, vector_df4], axis=1, join_axes=[df_train.index])
-df_train = pd.concat([df_train, vector_df5_pca], axis=1, join_axes=[df_train.index])
+df_train = pd.concat([df_train, vector_df5], axis=1, join_axes=[df_train.index])
+
+df_train = df_train.fillna(0)
+
+#y = df_train['Score']
+#df_train = df_train.drop('Score', axis=1)
+#df_train = pd.concat([df_train, y], axis=1, join_axes=[df_train.index])
 
 #arr = df['ContentRating'].as_matrix()
 #print np.unique(arr).size
@@ -156,7 +167,7 @@ df_train = pd.concat([df_train, vector_df5_pca], axis=1, join_axes=[df_train.ind
 out_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/'
 
 print df_train.shape
-df_train.to_csv(out_dir+'big_data_vec_1.csv')
+df_train.to_csv(out_dir+'big_data_vec_1_3K_pca_features.csv')
 
 #vector_df2.to_csv(out_dir+'Developer.csv',encoding='utf-8')
 #vector_df5.to_csv(out_dir+'Description.csv')

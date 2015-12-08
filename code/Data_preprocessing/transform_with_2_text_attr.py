@@ -86,13 +86,13 @@ df_train.Instalations = map(mapInstalation, df_train.Instalations)
 #df.AppSize=map(processAppSize,df.AppSize)
 
 #-------------------------split 100K points points into 20 segments------------------#
-splitted = [pd.DataFrame() for x in xrange(20)]
+'''splitted = [pd.DataFrame() for x in xrange(20)]
 
 splitted[0] = df_train[0:5000]
 for i in range(1, 20):
 	j = 5000
 	splitted[i] = df_train[j*i:j*(i+1)]
-
+'''
 #----------------------------------Vectorization--------------------------------------#
 min_df = 1
 max_df = 0.99 #it's value lies in: [0.7, 1.0), remove the word that occur in more than 90% of all the posts.
@@ -110,7 +110,10 @@ count_dialect = True
 #n_samples = n_samples #as u choose it.
 stem_vectorizer.setfilter_option(filter_by[0],count_dialect)
 
-df_train = df_train[:10000]
+#df_train = df_train[:100000]
+df_train = df_train[:75000]
+df_train = df_train.sample(frac=0.04)
+
 vector_df1, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'Category',vectorizer=stem_vectorizer, tf_idf=True)
 #vector_df2, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'Developer',vectorizer=stem_vectorizer, tf_idf=True)
 #vector_df3, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'Name',vectorizer=stem_vectorizer, tf_idf=True)
@@ -142,11 +145,16 @@ df_train = df_train.drop('Name', 1)
 df_train = df_train.drop('ContentRating', 1)
 df_train = df_train.drop('Description', 1)
 
-df_train = pd.concat([df_train, vector_df1], axis=1, join_axes=[df_train.index])
+#df_train = pd.concat([df_train, vector_df1], axis=1, ignore_index=True)
 #df_train = pd.concat([df_train, vector_df2_pca], axis=1, join_axes=[df_train.index])
 #df_train = pd.concat([df_train, vector_df3_pca], axis=1, join_axes=[df_train.index])
-df_train = pd.concat([df_train, vector_df4], axis=1, join_axes=[df_train.index])
+#df_train = pd.concat([df_train, vector_df4], axis=1, ignore_index=True)
 #df_train = pd.concat([df_train, vector_df5_pca], axis=1, join_axes=[df_train.index])
+#df = pd.concat([df_train, vector_df1, vector_df4], axis=1, join_axes=[df_train.index])
+
+'''for cols in vector_df1.columns:
+	s1 = vector_df1[cols]
+	df_train[cols] = pd.Series(s1, index=df_train.index)'''
 
 #arr = df['ContentRating'].as_matrix()
 #print np.unique(arr).size
@@ -156,7 +164,9 @@ df_train = pd.concat([df_train, vector_df4], axis=1, join_axes=[df_train.index])
 out_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/'
 
 print df_train.shape
-df_train.to_csv(out_dir+'big_data_with_2_vec_1_10K.csv')
+df_train.to_csv(out_dir+'big_data_with_2_vec_1_3K.csv')
+vector_df1.to_csv(out_dir+'vector_df1.csv')
+vector_df4.to_csv(out_dir+'vector_df4.csv')
 
 #vector_df2.to_csv(out_dir+'Developer.csv',encoding='utf-8')
 #vector_df5.to_csv(out_dir+'Description.csv')

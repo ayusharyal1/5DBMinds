@@ -110,7 +110,9 @@ count_dialect = True
 #n_samples = n_samples #as u choose it.
 stem_vectorizer.setfilter_option(filter_by[0],count_dialect)
 
-df_train = df_train[:10000]
+df_train = df_train[:100000]
+#df_train = df_train[:75000]
+#df_train = df_train.sample(frac=0.04)
 
 df_train = df_train.drop('Category', 1)
 df_train = df_train.drop('Developer', 1)
@@ -126,7 +128,7 @@ df_train = df_train.drop('Description', 1)
 out_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/'
 
 print df_train.shape
-df_train.to_csv(out_dir+'big_data_without_vec_1_10K.csv')
+df_train.to_csv(out_dir+'big_data_without_vec_1_100K_9features.csv')
 
 #vector_df2.to_csv(out_dir+'Developer.csv',encoding='utf-8')
 #vector_df5.to_csv(out_dir+'Description.csv')

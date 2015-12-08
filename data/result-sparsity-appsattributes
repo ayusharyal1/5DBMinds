@@ -1,0 +1,24 @@
+n_samples = 10K
+[['Category', 'OnlyEng', <class 'sklearn.feature_extraction.text.CountVectorizer'>, (10000, 41), 2.4390243902439024],
+['Category', 'AllLang', <class 'sklearn.feature_extraction.text.CountVectorizer'>, (10000, 41), 2.4390243902439024], 
+['Category', 'OnlyEng', <class '__main__.StemmedCountVectorizer'>, (10000, 16), 2.796875], 
+['Category', 'AllLang', <class '__main__.StemmedCountVectorizer'>, (10000, 41), 2.4390243902439024]
+
+]
+
+n_samples = 5K
+[['Category', 'OnlyEng', <class 'sklearn.feature_extraction.text.CountVectorizer'>, (10000, 41), 2.4390243902439024], 
+['Category', 'AllLang', <class 'sklearn.feature_extraction.text.CountVectorizer'>, (10000, 41), 2.4390243902439024], 
+['Category', 'OnlyEng', <class '__main__.StemmedCountVectorizer'>, (10000, 16), 2.796875], 
+['Category', 'AllLang', <class '__main__.StemmedCountVectorizer'>, (10000, 41), 2.4390243902439024],
+
+['Description', 'OnlyEng', <class 'sklearn.feature_extraction.text.CountVectorizer'>, (5000, 79510), 0.10307936108665577], 
+['Description', 'AllLang', <class 'sklearn.feature_extraction.text.CountVectorizer'>, (5000, 79510), 0.10307936108665577], 
+['Description', 'OnlyEng', <class '__main__.StemmedCountVectorizer'>, (5000, 9380), 0.5800746268656717], 
+['Description', 'AllLang', <class '__main__.StemmedCountVectorizer'>, (5000, 67006), 0.1136739993433424]]
+
+n_samples = 10K
+[['Name', 'OnlyEng', <class 'sklearn.feature_extraction.text.CountVectorizer'>, (10000, 9204), 0.030574750108648414],
+ ['Name', 'AllLang', <class 'sklearn.feature_extraction.text.CountVectorizer'>, (10000, 9204), 0.030574750108648414], 
+['Name', 'OnlyEng', <class '__main__.StemmedCountVectorizer'>, (10000, 3090), 0.058100323624595475], 
+['Name', 'AllLang', <class '__main__.StemmedCountVectorizer'>, (10000, 8233), 0.033726466658569175]]

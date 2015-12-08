@@ -1,0 +1,5 @@
+Results_Summarised.xlsx -> Compares Accuracy for classifiers that performed well and also shows value after grid search.
+Results_numerical_features.png -> Classifier performances with use of only numerical features.
+Results_Non_Numerical.png -> Classifier performances with use of all features. at 3000 data points. > 
+Results_vec -> Results with use of all words and only english words.
+

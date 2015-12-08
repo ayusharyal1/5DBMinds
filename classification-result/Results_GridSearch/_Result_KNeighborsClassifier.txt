@@ -1,0 +1,144 @@
+Grid Scores:
+
+0.597 (+/-0.089) for {'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'auto'}
+0.596 (+/-0.056) for {'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'auto'}
+0.584 (+/-0.082) for {'n_neighbors': 10, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'auto'}
+0.606 (+/-0.082) for {'n_neighbors': 10, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'auto'}
+0.613 (+/-0.064) for {'n_neighbors': 15, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'auto'}
+0.614 (+/-0.063) for {'n_neighbors': 15, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'auto'}
+0.610 (+/-0.080) for {'n_neighbors': 20, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'auto'}
+0.611 (+/-0.064) for {'n_neighbors': 20, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'auto'}
+0.602 (+/-0.056) for {'n_neighbors': 5, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'auto'}
+0.598 (+/-0.062) for {'n_neighbors': 5, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'auto'}
+0.594 (+/-0.080) for {'n_neighbors': 10, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'auto'}
+0.610 (+/-0.094) for {'n_neighbors': 10, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'auto'}
+0.621 (+/-0.080) for {'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'auto'}
+0.618 (+/-0.073) for {'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'auto'}
+0.613 (+/-0.085) for {'n_neighbors': 20, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'auto'}
+0.619 (+/-0.057) for {'n_neighbors': 20, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'auto'}
+0.587 (+/-0.085) for {'n_neighbors': 5, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'auto'}
+0.603 (+/-0.058) for {'n_neighbors': 5, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'auto'}
+0.581 (+/-0.084) for {'n_neighbors': 10, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'auto'}
+0.601 (+/-0.078) for {'n_neighbors': 10, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'auto'}
+0.608 (+/-0.055) for {'n_neighbors': 15, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'auto'}
+0.607 (+/-0.072) for {'n_neighbors': 15, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'auto'}
+0.606 (+/-0.069) for {'n_neighbors': 20, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'auto'}
+0.611 (+/-0.056) for {'n_neighbors': 20, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'auto'}
+0.597 (+/-0.089) for {'n_neighbors': 5, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'auto'}
+0.596 (+/-0.056) for {'n_neighbors': 5, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'auto'}
+0.584 (+/-0.082) for {'n_neighbors': 10, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'auto'}
+0.606 (+/-0.082) for {'n_neighbors': 10, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'auto'}
+0.613 (+/-0.064) for {'n_neighbors': 15, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'auto'}
+0.614 (+/-0.063) for {'n_neighbors': 15, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'auto'}
+0.610 (+/-0.080) for {'n_neighbors': 20, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'auto'}
+0.611 (+/-0.064) for {'n_neighbors': 20, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'auto'}
+0.597 (+/-0.089) for {'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.596 (+/-0.056) for {'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.584 (+/-0.082) for {'n_neighbors': 10, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.606 (+/-0.082) for {'n_neighbors': 10, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.613 (+/-0.064) for {'n_neighbors': 15, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.614 (+/-0.063) for {'n_neighbors': 15, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.610 (+/-0.080) for {'n_neighbors': 20, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.611 (+/-0.064) for {'n_neighbors': 20, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.602 (+/-0.056) for {'n_neighbors': 5, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.598 (+/-0.062) for {'n_neighbors': 5, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.594 (+/-0.080) for {'n_neighbors': 10, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.610 (+/-0.094) for {'n_neighbors': 10, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.621 (+/-0.080) for {'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.618 (+/-0.073) for {'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.613 (+/-0.085) for {'n_neighbors': 20, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.619 (+/-0.057) for {'n_neighbors': 20, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.587 (+/-0.085) for {'n_neighbors': 5, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.603 (+/-0.058) for {'n_neighbors': 5, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.581 (+/-0.084) for {'n_neighbors': 10, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.601 (+/-0.078) for {'n_neighbors': 10, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.608 (+/-0.055) for {'n_neighbors': 15, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.607 (+/-0.072) for {'n_neighbors': 15, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.606 (+/-0.069) for {'n_neighbors': 20, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.611 (+/-0.056) for {'n_neighbors': 20, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.597 (+/-0.089) for {'n_neighbors': 5, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.596 (+/-0.056) for {'n_neighbors': 5, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.584 (+/-0.082) for {'n_neighbors': 10, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.606 (+/-0.082) for {'n_neighbors': 10, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.613 (+/-0.064) for {'n_neighbors': 15, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.614 (+/-0.063) for {'n_neighbors': 15, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.610 (+/-0.080) for {'n_neighbors': 20, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'ball_tree'}
+0.611 (+/-0.064) for {'n_neighbors': 20, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'ball_tree'}
+0.597 (+/-0.089) for {'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.596 (+/-0.056) for {'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.584 (+/-0.082) for {'n_neighbors': 10, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.606 (+/-0.082) for {'n_neighbors': 10, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.613 (+/-0.064) for {'n_neighbors': 15, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.614 (+/-0.063) for {'n_neighbors': 15, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.610 (+/-0.080) for {'n_neighbors': 20, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.611 (+/-0.064) for {'n_neighbors': 20, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.602 (+/-0.056) for {'n_neighbors': 5, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.598 (+/-0.062) for {'n_neighbors': 5, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.594 (+/-0.080) for {'n_neighbors': 10, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.610 (+/-0.094) for {'n_neighbors': 10, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.621 (+/-0.080) for {'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.618 (+/-0.073) for {'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.613 (+/-0.085) for {'n_neighbors': 20, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.619 (+/-0.057) for {'n_neighbors': 20, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.587 (+/-0.085) for {'n_neighbors': 5, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.603 (+/-0.058) for {'n_neighbors': 5, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.581 (+/-0.084) for {'n_neighbors': 10, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.601 (+/-0.078) for {'n_neighbors': 10, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.608 (+/-0.055) for {'n_neighbors': 15, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.607 (+/-0.072) for {'n_neighbors': 15, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.606 (+/-0.069) for {'n_neighbors': 20, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.611 (+/-0.056) for {'n_neighbors': 20, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.597 (+/-0.089) for {'n_neighbors': 5, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.596 (+/-0.056) for {'n_neighbors': 5, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.584 (+/-0.082) for {'n_neighbors': 10, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.606 (+/-0.082) for {'n_neighbors': 10, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.613 (+/-0.064) for {'n_neighbors': 15, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.614 (+/-0.063) for {'n_neighbors': 15, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.610 (+/-0.080) for {'n_neighbors': 20, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'kd_tree'}
+0.611 (+/-0.064) for {'n_neighbors': 20, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'kd_tree'}
+0.597 (+/-0.089) for {'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'brute'}
+0.596 (+/-0.056) for {'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'brute'}
+0.584 (+/-0.082) for {'n_neighbors': 10, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'brute'}
+0.606 (+/-0.082) for {'n_neighbors': 10, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'brute'}
+0.613 (+/-0.064) for {'n_neighbors': 15, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'brute'}
+0.614 (+/-0.063) for {'n_neighbors': 15, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'brute'}
+0.610 (+/-0.080) for {'n_neighbors': 20, 'metric': 'euclidean', 'weights': 'uniform', 'algorithm': 'brute'}
+0.611 (+/-0.064) for {'n_neighbors': 20, 'metric': 'euclidean', 'weights': 'distance', 'algorithm': 'brute'}
+0.602 (+/-0.056) for {'n_neighbors': 5, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'brute'}
+0.598 (+/-0.062) for {'n_neighbors': 5, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'brute'}
+0.594 (+/-0.080) for {'n_neighbors': 10, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'brute'}
+0.610 (+/-0.094) for {'n_neighbors': 10, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'brute'}
+0.621 (+/-0.080) for {'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'brute'}
+0.618 (+/-0.073) for {'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'brute'}
+0.613 (+/-0.085) for {'n_neighbors': 20, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'brute'}
+0.619 (+/-0.057) for {'n_neighbors': 20, 'metric': 'manhattan', 'weights': 'distance', 'algorithm': 'brute'}
+0.587 (+/-0.085) for {'n_neighbors': 5, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'brute'}
+0.603 (+/-0.058) for {'n_neighbors': 5, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'brute'}
+0.581 (+/-0.084) for {'n_neighbors': 10, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'brute'}
+0.601 (+/-0.078) for {'n_neighbors': 10, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'brute'}
+0.608 (+/-0.055) for {'n_neighbors': 15, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'brute'}
+0.607 (+/-0.072) for {'n_neighbors': 15, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'brute'}
+0.606 (+/-0.069) for {'n_neighbors': 20, 'metric': 'chebyshev', 'weights': 'uniform', 'algorithm': 'brute'}
+0.611 (+/-0.056) for {'n_neighbors': 20, 'metric': 'chebyshev', 'weights': 'distance', 'algorithm': 'brute'}
+0.597 (+/-0.089) for {'n_neighbors': 5, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'brute'}
+0.596 (+/-0.056) for {'n_neighbors': 5, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'brute'}
+0.584 (+/-0.082) for {'n_neighbors': 10, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'brute'}
+0.606 (+/-0.082) for {'n_neighbors': 10, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'brute'}
+0.613 (+/-0.064) for {'n_neighbors': 15, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'brute'}
+0.614 (+/-0.063) for {'n_neighbors': 15, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'brute'}
+0.610 (+/-0.080) for {'n_neighbors': 20, 'metric': 'minkowski', 'weights': 'uniform', 'algorithm': 'brute'}
+0.611 (+/-0.064) for {'n_neighbors': 20, 'metric': 'minkowski', 'weights': 'distance', 'algorithm': 'brute'}
+Best Score:
+
+Best Params:
+0.621111111111{'n_neighbors': 15, 'metric': 'manhattan', 'weights': 'uniform', 'algorithm': 'auto'}
+Classification Report:
+             precision    recall  f1-score   support
+
+          1       0.00      0.00      0.00        14
+          2       0.00      0.00      0.00        13
+          3       0.00      0.00      0.00        86
+          4       0.41      0.22      0.28       625
+          5       0.67      0.87      0.76      1362
+
+avg / total       0.56      0.63      0.57      2100

@@ -14,10 +14,10 @@ from sklearn import cross_validation
 from sklearn.metrics import accuracy_score
 
 start_time = time.time()
-input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/big_data_vec_1_3K.csv'
-#big_data_vec_1_10K
-#big_data_with_2_vec_1_10K 
-#big_data_without_vec_1_10K 
+input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/3K/big_data_without_vec_1_3K_9features.csv'
+#big_data_vec_1_3K_pca_34features
+#big_data_with_2_vec_1_3K_34features
+#big_data_without_vec_1_3K_9features
 df = pd.DataFrame()
 df = pd.read_csv(input_dir)
 print df.head()

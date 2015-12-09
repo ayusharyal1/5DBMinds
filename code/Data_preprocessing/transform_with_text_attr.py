@@ -110,9 +110,9 @@ count_dialect = True
 #n_samples = n_samples #as u choose it.
 stem_vectorizer.setfilter_option(filter_by[0],count_dialect)
 
-df_train = df_train[:75000]
-# Randomly sample % of your dataframe
-df_train = df_train.sample(frac=0.04)
+#df_train = df_train[:75000]
+#df_train = df_train.sample(frac=0.04)
+df_train = df_train[:3000]
 
 vector_df1, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'Category',vectorizer=stem_vectorizer, tf_idf=True)
 vector_df2, fmatrix, column_vectorizer = avm.vectorize_columnTfIdf(df_train, 'Developer',vectorizer=stem_vectorizer, tf_idf=True)

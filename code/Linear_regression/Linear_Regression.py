@@ -8,6 +8,8 @@ import time
 import numpy as np
 import sklearn
 import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 from sklearn.cross_validation import cross_val_predict
 from sklearn.linear_model import LinearRegression
 from sklearn import cross_validation
@@ -29,16 +31,33 @@ def normalize(df):
 
 start_time = time.time()
 input_dir = '/media/naila/New Volume/CSE_6990_Big_Data_and_Data_Science/Project/data/numerical_csv/3K/big_data_without_vec_1_3K_9features.csv'
-#big_data_vec_1_10K
-#big_data_with_2_vec_1_10K 
-#big_data_without_vec_1_10K 
+#big_data_vec_1_3K_pca_34features
+#big_data_with_2_vec_1_3K_34features
+#big_data_without_vec_1_3K_9features
 
-#big_data_with_2_vec_1 #big_data_without_vec_1
 df = pd.DataFrame()
 df = pd.read_csv(input_dir)
 df = df.drop(df.columns[0], axis=1)# drop the column of row index
 print df.shape
 #print df.head()
+
+#y = df['Score']
+#df = df.drop('Score', axis=1)
+
+#pca = PCA(n_components=25, copy=True)
+#df = pd.DataFrame(pca.fit(df).transform(df))
+
+#tsne = TSNE(n_components=3, init='pca', random_state=0)
+#Y = pd.DataFrame(tsne.fit_transform(df))
+
+#df['Score'] = y
+print df.head()
+
+#df = df.drop('0.4', axis=1)
+#df = df.drop('4.3', axis=1)
+#df = df.drop('3.2', axis=1)
+#df = df.drop('2.1', axis=1)
+#df = df.drop('3.3', axis=1)
 
 kf = KFold(3000, n_folds=4)
 for train, test in kf:
@@ -56,10 +75,6 @@ for train, test in kf:
 
 	df_train = df_train.drop('Score', axis=1)
 	df_test = df_test.drop('Score', axis=1)
-
-	#df_train = normalize(df_train)
-	#df_test = normalize(df_test)
-
 	#lr = LinearRegression(fit_intercept=True, normalize=False, copy_X=True, n_jobs=4)
 	lr = LinearRegression()
 
@@ -75,13 +90,13 @@ for train, test in kf:
 	print('Variance score: %.2f' % lr.score(df_test, label_test))
 
 	# Plot outputs
-	'''plt.scatter(df_test, label_test,  color='black')
-	plt.plot(df_test, lr.predict(df_test), color='blue', linewidth=3)
+	#plt.scatter(df_test.columns[0], label_test,  color='black')
+	#plt.plot(df_test.columns[0], lr.predict(df_test), color='blue', linewidth=3)
 
-	plt.xticks(())
-	plt.yticks(())
+	#plt.xticks(())
+	#plt.yticks(())
 
-	plt.show()'''
+	#plt.show()
 
 print("--- %s seconds ---" % (time.time() - start_time))
 
